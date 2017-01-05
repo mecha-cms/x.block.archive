@@ -1,0 +1,21 @@
+---
+title: Archive
+description: Archive page generator.
+author: Taufik Nurrohman
+version: 1.0.0
+...
+
+Use this plugin to show all of the visible pages in a single page content as a link list.
+
+Put this block in the desired page content you want to show the link list to:
+
+~~~ .no-highlight
+[‌[‌archive‌]‌]
+~~~
+
+### Dependency
+
+ - **Extension**
+   - Block
+
+<!-- block:donate -->
