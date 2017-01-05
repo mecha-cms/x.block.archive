@@ -28,7 +28,7 @@ function fn_archive($path = PAGE) {
 
 Block::set('archive', function($content) use($url) {
     return Block::replace('archive', function() use($url) {
-        $cache = CACHE . DS . 'extend.plugin.archive.php';
+        $cache = str_replace(ROOT, CACHE, __DIR__) . '.php';
         $x = File::open($cache)->import(["", ""]);
         $hash = md5(json_encode(File::explore(PAGE, true, true)));
         if ($x[0] === $hash) {
