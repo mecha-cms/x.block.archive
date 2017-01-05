@@ -31,11 +31,10 @@ Block::set('archive', function($content) use($url) {
         $cache = str_replace(ROOT, CACHE, __DIR__) . '.php';
         $x = File::open($cache)->import(["", ""]);
         $hash = md5(json_encode(File::explore(PAGE, true, true)));
-        if ($x[0] === $hash) {
-            return str_replace(' href="', ' href="' . $url . '/', $x[1]);
+        if ($x[0] !== $hash) {
+            $x = [$hash, fn_archive()];
+            File::export($x)->saveTo($cache);
         }
-        $x = [$hash, fn_archive()];
-        File::export($x)->saveTo($cache);
-        return $x[1];
+        return str_replace(' href="', ' href="' . $url . '/', $x[1]);
     }, $content);
 });
