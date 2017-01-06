@@ -15,7 +15,8 @@ Put this block in the desired page content you want to show the link list to:
 
 ### Dependency
 
- - **Extension**
-   - Block
+#### Extension
+
+ - Block
 
 <!-- block:donate -->

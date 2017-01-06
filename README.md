@@ -8,8 +8,3 @@ Put this block in the desired page content you want to show the link list to:
 ~~~ .no-highlight
 [‌[‌archive‌]‌]
 ~~~
-
-### Dependency
-
- - **Extension**
-   - Block
