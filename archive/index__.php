@@ -9,6 +9,13 @@ function fn_archive($path = PAGE) {
     if ($files = Get::pages($path, 'page', 1, 'slug')) {
         $html .= '<ul>';
         foreach ($files as $file) {
+            $w = $file['path'];
+            $x = Path::D($w);
+            $y = Path::N($w);
+            $z = Path::B($x);
+            if ($z === $y && file_exists($x . '.page') && file_exists($x . DS . $z . '.page')) {
+                continue; // ignore placeholder page …
+            }
             $page = Page::open($file['path']);
             $u = $page->get('url');
             $t = $page->get('title');
