@@ -16,7 +16,7 @@ function fn_archive($path = PAGE) {
             if ($z === $y && file_exists($x . '.page') && file_exists($x . DS . $z . '.page')) {
                 continue; // ignore placeholder page …
             }
-            $page = Page::open($file['path']);
+            $page = Page::open($w);
             $u = $page->get('url');
             $t = $page->get('title');
             $html .= '<li>';
@@ -25,7 +25,7 @@ function fn_archive($path = PAGE) {
             } else {
                 $html .= '<a href="' . URL::short($u, false) . '">' . $t . '</a>';
             }
-            $html .= fn_archive(Path::D($file['path']) . DS . $file['slug']);
+            $html .= fn_archive($x . DS . $y);
             $html .= '</li>';
         }
         $html .= '</ul>';
