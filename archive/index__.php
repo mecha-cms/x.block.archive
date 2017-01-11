@@ -6,19 +6,18 @@ function fn_archive($path = PAGE) {
         return $html;
     }
     global $url;
-    if ($files = Get::pages($path, 'page', 1, 'slug')) {
+    if ($files = Get::pages($path, 'page', 1, 'slug', 'path')) {
         $html .= '<ul>';
         foreach ($files as $file) {
-            $w = $file['path'];
-            $x = Path::D($w);
-            $y = Path::N($w);
+            $x = Path::D($file);
+            $y = Path::N($file);
             $z = Path::B($x);
             if ($z === $y && file_exists($x . '.page') && file_exists($x . DS . $z . '.page')) {
                 continue; // ignore placeholder page …
             }
-            $page = Page::open($w);
-            $u = $page->get('url');
-            $t = $page->get('title');
+            $page = new Page($file);
+            $u = $page->url;
+            $t = $page->title;
             $html .= '<li>';
             if ($url->current === $u) {
                 $html .= '<span>' . $t . '</span>';
