@@ -2,6 +2,7 @@
 title: Archive
 description: Archive page generator.
 author: Taufik Nurrohman
+type: Markdown
 version: 2.0.1
 ...
 
