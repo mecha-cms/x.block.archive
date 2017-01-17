@@ -3,7 +3,7 @@ title: Archive
 description: Archive page generator.
 author: Taufik Nurrohman
 type: Markdown
-version: 2.0.1
+version: 2.0.2
 ...
 
 Use this plugin to show all of the visible pages in a single page content as a link list.

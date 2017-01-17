@@ -6,7 +6,7 @@ function fn_archive($path = PAGE) {
         return $html;
     }
     global $url;
-    if ($files = Get::pages($path, 'page', 1, 'slug', 'path')) {
+    if ($files = Get::pages($path, 'page', [1, 'slug'], 'path')) {
         $html .= '<ul>';
         foreach ($files as $file) {
             $x = Path::D($file);
