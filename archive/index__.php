@@ -13,7 +13,7 @@ function fn_archive($path = PAGE) {
             $y = Path::N($file);
             $z = Path::B($x);
             if ($z === $y && file_exists($x . '.page') && file_exists($x . DS . $z . '.page')) {
-                continue; // ignore placeholder page …
+                continue; // ignore placeholder page…
             }
             $page = new Page($file);
             $u = $page->url;
