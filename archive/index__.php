@@ -32,7 +32,8 @@ function fn_archive($path = PAGE) {
     return $html;
 }
 
-Block::set('archive', function($content) use($url) {
+function fn_archive_replace_archive($content) {
+    global $url;
     return Block::replace('archive', function() use($url) {
         $cache = str_replace(ROOT, CACHE, __DIR__) . '.php';
         $x = File::open($cache)->import(["", ""]);
@@ -43,4 +44,6 @@ Block::set('archive', function($content) use($url) {
         }
         return str_replace(' href="', ' href="' . $url . '/', $x[1]);
     }, $content);
-});
+}
+
+Block::set('archive', 'fn_archive_replace_archive', 10);
