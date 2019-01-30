@@ -1,49 +1,44 @@
 <?php
 
-function fn_archive_html($path = PAGE) {
-    $html = "";
-    if (!Is::D($path)) {
-        return $html;
-    }
-    global $url;
-    if ($files = Get::pages($path, 'page', [1, 'slug'], 'path')) {
-        $html .= '<ul>';
-        foreach ($files as $file) {
-            $x = Path::D($file);
-            $y = Path::N($file);
-            $z = Path::B($x);
-            if ($z === $y && file_exists($x . '.page') && file_exists($x . DS . $z . '.page')) {
-                continue; // ignore placeholder page…
-            }
-            $page = new Page($file);
-            $u = $page->url;
-            $t = $page->title;
-            $html .= '<li>';
-            if ($url->current === $u) {
-                $html .= '<span>' . $t . '</span>';
-            } else {
-                $html .= '<a href="' . URL::short($u, false) . '">' . $t . '</a>';
-            }
-            $html .= fn_archive_html($x . DS . $y);
-            $html .= '</li>';
+namespace fn {
+    function archive(string $path) {
+        $out = "";
+        if (!\is_dir($path)) {
+            return $out;
         }
-        $html .= '</ul>';
+        $files = \Get::pages($path, 'page', [1, 'title'], 'path');
+        if ($files->count()) {
+            $out .= '<ul>';
+            foreach ($files as $file) {
+                if (\Path::N($file) === '$') {
+                    continue; // Ignore placeholder page…
+                }
+                $page = new \Page($file);
+                $url = $page->url;
+                $title = $page->title;
+                $current = $GLOBALS['URL']['clean'] === $url;
+                $out .= '<li' . ($current ? ' class="current"' : "") . '>';
+                if ($current) {
+                    $out .= '<span>' . $title . '</span>';
+                } else {
+                    $out .= '<a href="' . \URL::short($url, false) . '">' . $title . '</a>';
+                }
+                $out .= archive(\Path::F($file));
+                $out .= '</li>';
+            }
+            $out .= '</ul>';
+        }
+        return $out;
     }
-    return $html;
 }
 
-function fn_archive($content) {
-    global $url;
-    return Block::replace('archive', function() use($url) {
-        $cache = str_replace(ROOT, CACHE, __DIR__) . '.php';
-        $x = File::open($cache)->import(["", ""]);
-        $hash = md5(json_encode(File::explore(PAGE, true)));
-        if ($x[0] !== $hash) {
-            $x = [$hash, fn_archive_html()];
-            File::export($x)->saveTo($cache);
-        }
-        return str_replace(' href="', ' href="' . $url . '/', $x[1]);
-    }, $content);
+namespace fn\block {
+    function archive($a, $b) {
+        $path = \rtrim(PAGE . DS . \strtr($b['path'] ?? "", '/', DS), DS);
+        $cache = \Cache::expire($path) ? \Cache::set($path, function() use($path) {
+            return \fn\archive($path);
+        }) : \Cache::get($path, "");
+        return \str_replace(' href="', ' href="' . $GLOBALS['URL']['$'] . '/', $cache);
+    }
+    \Block::set('archive', __NAMESPACE__ . "\\archive", 10);
 }
-
-Block::set('archive', 'fn_archive', 10);
