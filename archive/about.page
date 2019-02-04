@@ -3,7 +3,7 @@ title: Archive
 description: Archive page generator.
 author: Taufik Nurrohman
 type: Markdown
-version: 2.1.0
+version: 2.1.1
 
 dependency:
   extension:
@@ -13,10 +13,53 @@ dependency:
 
 Use this plugin to show all of the visible pages in a single page content as a link list.
 
-Put this block in the desired page content you want to show the link list to:
+### Basic Usage
+
+Put this block in the desired page content you want to display the link list to:
 
 ~~~ .txt
 [‌[‌archive‌]‌]
+~~~
+
+### Advance Usage
+
+#### Sorting
+
+By default, this plugin will display a list of pages sorted ascending by its title. If you add `date` attribute with value `true` or time pattern, then each list item will be completed with page publication time, and list order will be made based on the page publication time:
+
+~~~ .txt
+[‌[‌archive date="true"‌]‌]
+
+[‌[‌archive date="%‌Y‌%/%‌M‌%/%‌D‌%"‌]‌]
+~~~
+
+#### Folder Selection
+
+You can also limit the list output by determining the folder path relative to `PAGE`. This is useful for creating archive pages by category:
+
+~~~ .yaml
+---
+title: Archive
+description: Site archive by category.
+author: Taufik Nurrohman
+type: Markdown
+...
+
+### Articles
+
+[‌[‌archive path="article"‌]‌]
+
+### Plugins
+
+[‌[‌archive path="extension/plugin"‌]‌]
+~~~
+
+#### Nesting Level
+
+The maximum recursion value is `5` by default, but you can specify another number. Determining value `1` will deactivate the recursive list feature:
+
+~~~ .txt
+[‌[‌archive level="1"‌]‌]
 ~~~
 
 <!-- block:donate -->
