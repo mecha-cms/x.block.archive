@@ -3,7 +3,7 @@ title: Archive
 description: Archive page generator.
 author: Taufik Nurrohman
 type: Markdown
-version: 2.1.1
+version: 2.1.2
 
 dependency:
   extension:
@@ -59,7 +59,7 @@ type: Markdown
 The maximum recursion value is `5` by default, but you can specify another number. Determining value `1` will deactivate the recursive list feature:
 
 ~~~ .txt
-[‌[‌archive level="1"‌]‌]
+[‌[‌archive deep="1"‌]‌]
 ~~~
 
 <!-- block:donate -->
