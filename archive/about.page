@@ -56,10 +56,10 @@ type: Markdown
 
 #### Nesting Level
 
-The maximum recursion value is `5` by default, but you can specify another number. Determining value `1` will deactivate the recursive list feature:
+The maximum recursion value is `4` by default, but you can specify another number. Determining value `0` will deactivate the recursive list feature:
 
 ~~~ .txt
-[‌[‌archive deep="1"‌]‌]
+[‌[‌archive deep="0"‌]‌]
 ~~~
 
 <!-- block:donate -->
