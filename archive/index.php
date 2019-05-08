@@ -1,6 +1,6 @@
 <?php
 
-namespace fn {
+namespace _ {
     function archive(string $path, $date, $i, $deep) {
         $out = "";
         if (!\is_dir($path)) {
@@ -32,7 +32,7 @@ namespace fn {
     }
 }
 
-namespace fn\block {
+namespace _\block {
     function archive($content, $attr) {
         extract(\extend([
             'date' => false,
@@ -43,7 +43,7 @@ namespace fn\block {
         $expire = \HTTP::is('get', 'cache') && !\HTTP::get('cache') ? 0 : '1 year';
         $path = \rtrim(PAGE . DS . \strtr($path ?? "", '/', DS), DS);
         $content = \Cache::alt($path . \json_encode($attr), function() use($date, $deep, $path) {
-            return \fn\archive($path, $date && !\is_string($date) ? '%Y%.%M%.%D%' : $date, 0, $deep);
+            return \_\archive($path, $date && !\is_string($date) ? '%Y.%m.%d' : $date, 0, $deep);
         }, $expire) ?? "";
         return \str_replace(' href="', ' href="' . $GLOBALS['URL']['$'] . '/', $content);
     }
