@@ -5,10 +5,10 @@ author: Taufik Nurrohman
 type: Markdown
 version: 2.1.2
 
-use:
+lot:
   extend:
-  - block
-  - page
+    block: 1
+    page: 1
 ...
 
 Use this plugin to show all of the visible pages in a single page content as a link list.
