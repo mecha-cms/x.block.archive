@@ -34,7 +34,7 @@ namespace _ {
 
 namespace _\block {
     function archive($content, $attr) {
-        extract(\extend([
+        extract(\alter([
             'date' => false,
             'deep' => 2,
             'path' => ""
