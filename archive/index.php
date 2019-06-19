@@ -42,7 +42,7 @@ namespace _\block {
         // Refresh cache by adding `?cache=0` or `?cache=false` to the current URL
         $expire = \HTTP::is('get', 'cache') && !\HTTP::get('cache') ? 0 : '1 year';
         $path = \rtrim(PAGE . DS . \strtr($path ?? "", '/', DS), DS);
-        $content = \Cache::alt($path . \json_encode($attr), function() use($date, $deep, $path) {
+        $content = \Cache::live($path . \json_encode($attr), function() use($date, $deep, $path) {
             return \_\archive($path, $date && !\is_string($date) ? '%Y.%m.%d' : $date, 0, $deep);
         }, $expire) ?? "";
         return \str_replace(' href="', ' href="' . $GLOBALS['URL']['$'] . '/', $content);
