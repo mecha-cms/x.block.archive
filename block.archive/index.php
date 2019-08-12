@@ -1,19 +1,15 @@
 <?php
 
-namespace _ {
-    function archive(string $path, $date, $i, $deep) {
+namespace _\lot\x\block\archive {
+    function content(string $path, $date, $i, $deep) {
         $out = "";
         if (!\is_dir($path)) {
             return $out;
         }
-        $files = \Get::pages($path, 'page', $date ? [-1, 'time'] : [1, 'title'], 'path');
-        if ($files->count()) {
+        $pages = \Pages::from($path)->sort($date ? [-1, 'time'] : [1, 'title']);
+        if ($pages->count()) {
             $out .= '<ul>';
-            foreach ($files as $file) {
-                if (\Path::N($file) === '$') {
-                    continue; // Ignore placeholder page…
-                }
-                $page = new \Page($file);
+            foreach ($pages as $page) {
                 $url = $page->url;
                 $title = $page->title;
                 $out .= '<li>';
@@ -22,7 +18,7 @@ namespace _ {
                 }
                 $out .= '<a href="' . \URL::short($url, false) . '">' . $title . '</a>';
                 if ($i < $deep) {
-                    $out .= archive(\Path::F($file), $date, $i + 1, $deep);
+                    $out .= content(\Path::F($page->path), $date, $i + 1, $deep);
                 }
                 $out .= '</li>';
             }
@@ -32,20 +28,20 @@ namespace _ {
     }
 }
 
-namespace _\block {
+namespace _\lot\x\block {
     function archive($content, $attr) {
-        extract(\extend([
+        extract(\array_replace([
             'date' => false,
-            'deep' => 2,
+            'deep' => 4,
             'path' => ""
         ], $attr), \EXTR_SKIP);
         // Refresh cache by adding `?cache=0` or `?cache=false` to the current URL
-        $expire = \HTTP::is('get', 'cache') && !\HTTP::get('cache') ? 0 : '1 year';
+        $expire = \Request::is('get', 'cache') && !\Get::get('cache') ? 0 : '1 year';
         $path = \rtrim(PAGE . DS . \strtr($path ?? "", '/', DS), DS);
         $content = \Cache::live($path . \json_encode($attr), function() use($date, $deep, $path) {
-            return \_\archive($path, $date && !\is_string($date) ? '%Y.%m.%d' : $date, 0, $deep);
+            return \_\lot\x\block\archive\content($path, $date && !\is_string($date) ? '%Y.%m.%d' : $date, 0, $deep);
         }, $expire) ?? "";
-        return \str_replace(' href="', ' href="' . $GLOBALS['URL']['$'] . '/', $content);
+        return \str_replace(' href="', ' href="' . $GLOBALS['url'] . '/', $content);
     }
     \Block::set('archive', __NAMESPACE__ . "\\archive", 10);
 }
