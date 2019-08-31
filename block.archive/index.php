@@ -37,7 +37,7 @@ namespace _\lot\x\block {
         ], $attr), \EXTR_SKIP);
         // Refresh cache by adding `?cache=0` or `?cache=false` to the current URL
         $expire = \Request::is('get', 'cache') && !\Get::get('cache') ? 0 : '1 year';
-        $path = \rtrim(PAGE . DS . \strtr($path ?? "", '/', DS), DS);
+        $path = \rtrim(\PAGE . \DS . \strtr($path ?? "", '/', \DS), \DS);
         $content = \Cache::live($path . \json_encode($attr), function() use($date, $deep, $path) {
             return \_\lot\x\block\archive\content($path, $date && !\is_string($date) ? '%Y.%m.%d' : $date, 0, $deep);
         }, $expire) ?? "";
