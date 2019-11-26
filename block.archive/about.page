@@ -3,7 +3,7 @@ title: Archive Block
 description: Archive page generator.
 author: Taufik Nurrohman
 type: Markdown
-version: 2.3.1
+version: 2.3.3
 
 use:
   '.\lot\x\block': 1
@@ -24,33 +24,33 @@ Put this block in the desired page content you want to display the link list to:
 
 #### Sorting
 
-By default, this extension will display a list of pages sorted ascending by its title. If you add `date` attribute with value `true` or time pattern, then each list item will be completed with page publication time, and list order will be made based on the page publication time:
+By default, this extension will display the list of pages sorted ascending by its title. If you add `time` attribute with value `true` or a time pattern, then each list item will be completed with page publication time, and list order will be made based on the page publication time:
 
 ~~~ .txt
-[‌[‌archive date="true"‌]‌]
+[‌[‌archive time="true"‌]‌]
 
-[‌[‌archive date="%Y/%m/%d"‌]‌]
+[‌[‌archive time="%Y/%m/%d"‌]‌]
 ~~~
 
 #### Folder Selection
 
-You can also limit the list output by determining the folder path relative to `PAGE`. This is useful for creating archive pages by category:
+You can also limit the list output by determining the folder path relative to `PAGE`. This is useful for creating archive page by category:
 
 ~~~ .yaml
 ---
 title: Archive
-description: Site archive by category.
+description: Site archives by category.
 author: Taufik Nurrohman
 type: Markdown
 ...
 
 ### Articles
 
-[‌[‌archive path="article"‌]‌]
+[‌[‌archive path="/article"‌]‌]
 
 ### Extensions
 
-[‌[‌archive path="reference/extension"‌]‌]
+[‌[‌archive path="/reference/extension"‌]‌]
 ~~~
 
 #### Nesting Level
