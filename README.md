@@ -1,10 +1,9 @@
 Archive Block Extension for Mecha
 =================================
 
-Use this extension to show all of the visible pages in a single page content as a link list.
+Release Notes
+-------------
 
-Put this block in the desired page content you want to show the link list to:
+### 2.3.3
 
-~~~ .no-highlight
-[‌[‌archive‌]‌]
-~~~
+ - Added more options: `deep`, `path`, `time`.

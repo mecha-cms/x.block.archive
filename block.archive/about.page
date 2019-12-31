@@ -34,7 +34,7 @@ By default, this extension will display the list of pages sorted ascending by it
 
 #### Folder Selection
 
-You can also limit the list output by determining the folder path relative to `PAGE`. This is useful for creating archive page by category:
+You can also limit the list output by determining the folder path relative to `.\lot\page`. This is useful for creating archive page by category:
 
 ~~~ .yaml
 ---
