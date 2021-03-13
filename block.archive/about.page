@@ -3,7 +3,7 @@ title: Archive Block
 description: Archive page generator.
 author: Taufik Nurrohman
 type: Markdown
-version: 2.3.4
+version: 2.3.5
 
 use:
   '.\lot\x\block': 1

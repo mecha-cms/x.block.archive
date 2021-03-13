@@ -1,7 +1,7 @@
 <?php
 
-namespace _\lot\x\block\archive {
-    function content(string $path, $time, $i, $deep) {
+namespace x {
+    function block__archive(string $path, $time, $i, $deep) {
         $out = "";
         if (!\is_dir($path)) {
             return $out;
@@ -28,8 +28,8 @@ namespace _\lot\x\block\archive {
     }
 }
 
-namespace _\lot\x\block {
-    function archive($content, $attr) {
+namespace x\block__archive {
+    function block($content, $attr) {
         extract(\array_replace([
             'deep' => 4,
             'path' => "",
@@ -39,9 +39,9 @@ namespace _\lot\x\block {
         $expire = \Request::is('Get', 'cache') && !\Get::get('cache') ? 0 : '1 year';
         $path = \rtrim(\LOT . \DS . 'page' . \strtr($path ?? "", '/', \DS), \DS);
         $content = \Cache::live($path . \json_encode($attr), function() use($time, $deep, $path) {
-            return \_\lot\x\block\archive\content($path, $time && !\is_string($time) ? '%Y.%m.%d' : $time, 0, $deep);
+            return \x\block__archive($path, $time && !\is_string($time) ? '%Y.%m.%d' : $time, 0, $deep);
         }, $expire) ?? "";
         return \str_replace(' href="', ' href="' . $GLOBALS['url'] . '/', $content);
     }
-    \Block::set('archive', __NAMESPACE__ . "\\archive", 10);
+    \Block::set('archive', __NAMESPACE__ . "\\block", 10);
 }
