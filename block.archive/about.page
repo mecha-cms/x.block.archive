@@ -26,7 +26,7 @@ By default, this extension will display the list of pages sorted ascending by it
 
 <pre><code class="txt">&#x5B;<span>&#x5B;archive time="true"&#x5D;</span>&#x5D;
 
-&#x5B;<span>&#x5B;archive time="%Y/%m/%d&#x5D;</span>&#x5D;</code></pre>
+&#x5B;<span>&#x5B;archive time="%Y/%m/%d"&#x5D;</span>&#x5D;</code></pre>
 
 #### Folder Selection
 
