@@ -1,0 +1,8 @@
+{
+  "description": "Archive page generator.",
+  "license": "GPL-3.0-or-later",
+  "name": "mecha-cms/x.block.archive",
+  "require": {
+    "mecha-cms/x.block": "^2.0.0"
+  }
+}
