@@ -17,7 +17,7 @@ Use this extension to show all of the visible pages in a single page content as 
 
 Put this block in the desired page content you want to display the link list to:
 
-<pre><code class="txt">&#x5B;<span>&#x5B;archive/&#x5D;</span>&#x5D;</code></pre>
+<pre><code class="txt">&#x5B;<span>&#x5B;archive&#x5D;</span>&#x5D;</code></pre>
 
 ### Advance Usage
 
@@ -25,9 +25,9 @@ Put this block in the desired page content you want to display the link list to:
 
 By default, this extension will display the list of pages sorted ascending by its title. If you add `time` attribute with value `true` or a time pattern, then each list item will be completed with page publication time, and list order will be made based on the page publication time:
 
-<pre><code class="txt">&#x5B;<span>&#x5B;archive time="true"/&#x5D;</span>&#x5D;
+<pre><code class="txt">&#x5B;<span>&#x5B;archive time="true"&#x5D;</span>&#x5D;
 
-&#x5B;<span>&#x5B;archive time="%Y/%m/%d"/&#x5D;</span>&#x5D;</code></pre>
+&#x5B;<span>&#x5B;archive time="%Y/%m/%d"&#x5D;</span>&#x5D;</code></pre>
 
 #### Folder Selection
 
@@ -42,14 +42,14 @@ type: Markdown
 
 ### Articles
 
-&#x5B;<span>&#x5B;archive path="/article"/&#x5D;</span>&#x5D;
+&#x5B;<span>&#x5B;archive path="/article"&#x5D;</span>&#x5D;
 
 ### Extensions
 
-&#x5B;<span>&#x5B;archive path="/store/extension"/&#x5D;</span>&#x5D;</code></pre>
+&#x5B;<span>&#x5B;archive path="/store/extension"&#x5D;</span>&#x5D;</code></pre>
 
 #### Nesting Level
 
 The maximum recursion value is `4` by default, but you can specify another number. Determining value `0` will deactivate the recursive list feature:
 
-<pre><code class="txt">&#x5B;<span>&#x5B;archive deep="0"/&#x5D;</span>&#x5D;</code></pre>
+<pre><code class="txt">&#x5B;<span>&#x5B;archive deep="0"&#x5D;</span>&#x5D;</code></pre>
