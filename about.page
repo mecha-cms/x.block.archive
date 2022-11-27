@@ -42,11 +42,11 @@ type: Markdown
 
 ### Articles
 
-&#x5B;<span>&#x5B;archive path="/article"&#x5D;</span>&#x5D;
+&#x5B;<span>&#x5B;archive route="/article"&#x5D;</span>&#x5D;
 
 ### Extensions
 
-&#x5B;<span>&#x5B;archive path="/store/extension"&#x5D;</span>&#x5D;</code></pre>
+&#x5B;<span>&#x5B;archive route="/store/extension"&#x5D;</span>&#x5D;</code></pre>
 
 #### Nesting Level
 
