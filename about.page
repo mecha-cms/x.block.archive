@@ -2,6 +2,7 @@
 title: Block Archive
 description: Archive page generator.
 icon: 'M2,4C2,2.89 2.9,2 4,2H7V4H4V7H2V4M22,4V7H20V4H17V2H20A2,2 0 0,1 22,4M20,20V17H22V20C22,21.11 21.1,22 20,22H17V20H20M2,20V17H4V20H7V22H4A2,2 0 0,1 2,20M10,2H14V4H10V2M10,20H14V22H10V20M20,10H22V14H20V10M2,10H4V14H2V10Z'
+color: '#2f2f2f'
 author: Taufik Nurrohman
 type: Markdown
 version: 2.3.5
@@ -23,7 +24,9 @@ Put this block in the desired page content you want to display the link list to:
 
 #### Sorting
 
-By default, this extension will display the list of pages sorted ascending by its title. If you add `time` attribute with value `true` or a time pattern, then each list item will be completed with page publication time, and list order will be made based on the page publication time:
+By default, this extension will display the list of pages sorted ascending by its title. If you add `time` attribute
+with value `true` or a time pattern, then each list item will be completed with page publication time, and list order
+will be made based on the page publication time:
 
 <pre><code class="txt">&#x5b;<span>&#x5b;archive time="true"&#x5d;</span>&#x5d;
 
@@ -31,7 +34,8 @@ By default, this extension will display the list of pages sorted ascending by it
 
 #### Folder Selection
 
-You can also limit the list output by determining the folder path relative to `.\lot\page`. This is useful for creating archive page by category:
+You can also limit the list output by determining the folder path relative to `.\lot\page`. This is useful for creating
+archive page by category:
 
 <pre><code class="yaml">---
 title: Archive
@@ -50,6 +54,7 @@ type: Markdown
 
 #### Nesting Level
 
-The maximum recursion value is `4` by default, but you can specify another number. Determining value `0` will deactivate the recursive list feature:
+The maximum recursion value is `4` by default, but you can specify another number. Determining value `0` will deactivate
+the recursive list feature:
 
 <pre><code class="txt">&#x5b;<span>&#x5b;archive deep="0"&#x5d;</span>&#x5d;</code></pre>
