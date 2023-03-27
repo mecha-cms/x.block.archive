@@ -6,10 +6,6 @@ color: '#2f2f2f'
 author: Taufik Nurrohman
 type: Markdown
 version: 2.3.5
-
-use:
-  '.\lot\x\block': 1
-  '.\lot\x\page': 1
 ...
 
 Use this extension to show all of the visible pages in a single page content as a link list.
