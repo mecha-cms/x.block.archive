@@ -1,4 +1,4 @@
-<?php namespace x;
+<?php namespace x\block__archive;
 
 function block__archive(string $content, array $data = []) {
     \extract(\array_replace([
