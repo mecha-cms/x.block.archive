@@ -5,7 +5,7 @@ icon: 'M2,4C2,2.89 2.9,2 4,2H7V4H4V7H2V4M22,4V7H20V4H17V2H20A2,2 0 0,1 22,4M20,2
 color: '#2f2f2f'
 author: Taufik Nurrohman
 type: Markdown
-version: 2.3.5
+version: 3.0.0
 ...
 
 Use this extension to display all visible pages in a single page content as a link list.
