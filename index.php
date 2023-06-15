@@ -1,11 +1,11 @@
 <?php namespace x\block__archive;
 
-function block__archive(string $content, array $data = []) {
+function block__archive(string $content, array $lot = []) {
     \extract(\array_replace([
         'deep' => 4,
         'route' => "",
         'time' => false
-    ], \e($data[2] ?? [])), \EXTR_SKIP);
+    ], \e($lot[2] ?? [])), \EXTR_SKIP);
     $create = static function (string $folder, int $i = 0) use ($deep, $route, $time, &$create) {
         $out = "";
         if (!\is_dir($folder)) {
@@ -15,11 +15,11 @@ function block__archive(string $content, array $data = []) {
         if ($pages->count()) {
             $out .= '<ul>';
             foreach ($pages as $page) {
-                $url = $page->url;
                 $title = $page->title;
+                $url = $page->url;
                 $out .= '<li>';
                 if ($time) {
-                    $out .= '<time datetime="' . $page->time->ISO8601 . '">' . $page->time(true === $time ? '%Y/%m/%d' : $time) . '</time>&#x2003;';
+                    $out .= '<time datetime="' . $page->time->format('c') . '">' . $page->time(true === $time ? '%Y/%m/%d' : $time) . '</time>&#xa0;&#xb7;&#xa0;';
                 }
                 $out .= '<a href="' . \short($page->url) . '">' . $page->title . '</a>';
                 if ($i < $deep) {
